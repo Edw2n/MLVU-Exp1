@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 function App() {
 
-  let nueron_list = [132, 210, 233, 291, 355, 356, 360, 577, 660, 735, 840, 862, 904, 906, 908, 997, 1173, 1526, 1591, 1797, 1895, 1943, 1954, 1994, 1997, 2031]
+  let nueron_list = [291, 356, 660, 906, 908, 1526, 1591, 1943, 1994, 2031]
   let expRootDir = 'full_spec11/'
   let targetTestDir = '/Madry'
   let rootDirs = nueron_list.map(item => {
@@ -49,7 +49,14 @@ function App() {
     a.download = fileName;
     a.click();
    }
-   
+
+   function getProblemSpec(){
+
+    let problemSpec = {}
+    rootDirs.forEach((e,idx)=>{problemSpec['Q'+(idx+1)]=e})
+    download(JSON.stringify(problemSpec), "experiment1_problem_spec.json", "text/plain");
+  }
+
   function submit() {
     let notOK = [] // totalInfo update 할때 notOK 계산해 놓는게 나으려나
 
@@ -60,7 +67,8 @@ function App() {
     })
 
     if(notOK.length==0){
-      download(JSON.stringify(userInfo), "experiment1_"+userInfo["name"]+".json", "text/plain");
+      let answers = {...userInfo, ...totalInfo}
+      download(JSON.stringify(answers), "experiment1_"+userInfo["name"]+".json", "text/plain");
     }
 
     return alert(
@@ -128,6 +136,7 @@ function App() {
       })}
 
       <button onClick={submit}>Submit</button>
+      {/* <button onClick={getProblemSpec}>download problem Spec</button> */}
 
     </div>
   );

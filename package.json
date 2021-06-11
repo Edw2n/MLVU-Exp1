@@ -1,5 +1,5 @@
 {
-  "name": "basic-test-set",
+  "name": "experiment1",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,6 +14,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
+  "homepage": "https://github.com/Edw2n/MLVU-Exp1",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
